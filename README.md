@@ -70,15 +70,7 @@ protected void loadResources() {
 拿到每一个item里面的ImageView的宽度 计算方式：
 屏幕宽度/列数 - item的左边距 - item 的右边距 （如果有内边距则再减掉左右两边的Padding）
 
-
-public class DetailsAdapter extends RecyclerView.Adapter<DetailsAdapter.DetailsViewHolder> {
-    private final LayoutInflater mInflater;
-    private List<ItemDetails.Details> mLists = new ArrayList<>();
-    private int mItemWidth;
-    public DetailsAdapter(Context context) {
-        mInflater = LayoutInflater.from(context);
-        mItemWidth = AppUtil.getDisplayMetrics(context).widthPixels / 2 - AppUtil.dip2px(10) - AppUtil.dip2px(5);
-    }
+mItemWidth = AppUtil.getDisplayMetrics(context).widthPixels / 2 - AppUtil.dip2px(10) - AppUtil.dip2px(5);
 
 在Adapter 的onBindViewHolder()方法中，获取ImageView的bitmap，并计算按比率缩小后的bitmap的高度，有了imageview的宽高，后面就so easy了
 
@@ -96,12 +88,6 @@ public class DetailsAdapter extends RecyclerView.Adapter<DetailsAdapter.DetailsV
             holder.ivPic.setLayoutParams(params);
         }
     });
-    holder.ivPic.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            T.showShort("你点击了第" + position + "张图片");
-        }
-    });
 }
 
 根据宽度计算等比例的高度的方法
@@ -112,3 +98,18 @@ public static  int getHeight(Bitmap btm,int newWidth){
     float scale=Math.abs((btmW-newWidth))/btmW;
     return Math.abs((int)(btmH-btmH * scale));
 }
+
+
+6、 判断ScrollView 是否滚动到底部或顶部
+1）是否滚动到顶部
+[java] view plain copy print?
+if(scroll.getScrollY() == 0){  
+    // 到顶部了   
+}  
+
+2）是否滚动到底部
+//childView是scrollview里包含的Linearlayout容器  
+View childView = scrollView.getChildAt0);  
+if(mLastY == (childView.getHeight()-scrollView.getHeight())){  
+    //滑动到底部  
+}  
