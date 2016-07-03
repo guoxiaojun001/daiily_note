@@ -1,6 +1,9 @@
 # daiily_note
 每日一记，常见问题整理
 
+a)http://blog.csdn.net/u011068702/article/details/51811410
+http://www.2cto.com/kf/201502/376042.html
+b)http://blog.csdn.net/gf771115/article/details/30269159
 
 1、activity中有fragment，如果从fragment 执行startActivityForResult方式启动activity，调用谁的OnActivityResult呢？
 
